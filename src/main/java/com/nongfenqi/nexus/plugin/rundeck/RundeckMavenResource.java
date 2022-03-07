@@ -27,7 +27,7 @@ import org.sonatype.goodies.common.ComponentSupport;
 import org.sonatype.nexus.blobstore.api.Blob;
 import org.sonatype.nexus.repository.Repository;
 import org.sonatype.nexus.repository.manager.RepositoryManager;
-import org.sonatype.nexus.repository.search.SearchService;
+import org.sonatype.nexus.repository.search.ElasticSearchService;
 import org.sonatype.nexus.repository.storage.Asset;
 import org.sonatype.nexus.repository.storage.Bucket;
 import org.sonatype.nexus.repository.storage.StorageFacet;
@@ -64,7 +64,7 @@ import static org.sonatype.nexus.common.text.Strings2.isBlank;
 public class RundeckMavenResource
         extends ComponentSupport
         implements Resource {
-    private final SearchService searchService;
+    private final ElasticSearchService searchService;
 
     private final RepositoryManager repositoryManager;
 
@@ -73,7 +73,7 @@ public class RundeckMavenResource
 
     @Inject
     public RundeckMavenResource(
-            SearchService searchService,
+            ElasticSearchService searchService,
             RepositoryManager repositoryManager
     ) {
         this.searchService = checkNotNull(searchService);
